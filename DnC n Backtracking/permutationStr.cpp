@@ -1,14 +1,19 @@
 #include<iostream>
 #include<string>
+#include<algorithm>
 using namespace std;
 
 void Pp(string str, int index){
+    
 
     if(index>=str.length()){
         cout<<str<<" ";
         return;
     }
     for(int j= index; j<str.length(); j++){
+
+        if( index != j && str[index]==str[j])
+        continue;
         swap(str[index], str[j]);
     
     Pp(str, index+1);
@@ -19,6 +24,7 @@ void Pp(string str, int index){
 
 int main(){
     string str = "abc";
+    sort(str.begin(), str.end());
     int index=0;
     Pp(str,index);
     return 0;
